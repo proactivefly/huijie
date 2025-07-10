@@ -1,10 +1,4 @@
-/*
- * @Date: 2021-12-02 19:15:41
- * @LastEditors: yiqian.lsq
- * @LastEditTime: 2021-12-12 20:04:41
- * @FilePath: /taro-music/src/app.config.ts
- * @Description:
- */
+
 export default {
   pages: [
     "pages/index/index",

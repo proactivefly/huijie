@@ -7,7 +7,6 @@ import classnames from "classnames";
 import CLoading from "../../components/CLoading";
 import CMusic from "../../components/CMusic";
 import api from "../../services/api";
-// import { injectPlaySong } from "../../utils/decorators";
 import { songType } from "../../constants/commonType";
 import {
   getRecommendPlayList,
@@ -103,6 +102,7 @@ interface Index {
       dispatch(updatePlayStatus(object));
     }
 }))
+
 class Index extends Component<IProps, PageState> {
   constructor(props) {
     super(props);
@@ -115,25 +115,19 @@ class Index extends Component<IProps, PageState> {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
+    console.log('componentWillReceiveProps',this.props, nextProps);
     this.setState({
       showLoading: false
     });
   }
 
   componentWillMount() {
-    this.getPersonalized();
-    this.getNewsong();
-    this.getDjprogram();
-    this.getRecommend();
-    this.getBanner();
+    // this.getPersonalized();
+    // this.getNewsong();
+    // this.getDjprogram();
+    // this.getRecommend();
+    // this.getBanner();
   }
-
-  componentWillUnmount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
 
   componentDidMount() {
     this.removeLoading();
@@ -180,7 +174,6 @@ class Index extends Component<IProps, PageState> {
         type: 1
       })
       .then(({ data }) => {
-        console.log("banner", data);
         if (data.banners) {
           this.setState({
             bannerList: data.banners
@@ -212,10 +205,6 @@ class Index extends Component<IProps, PageState> {
   }
 
   goDjDetail(item) {
-    // Taro.showToast({
-    //   title: '暂未实现，敬请期待',
-    //   icon: 'none'
-    // })
     Taro.navigateTo({
       url: `/pages/packageA/pages/djprogramListDetail/index?id=${item.id}&name=${item.name}`
     });
@@ -331,22 +320,6 @@ class Index extends Component<IProps, PageState> {
             ))}
           </View>
         </View>
-        {/* <View className='recommend_playlist'>
-          <View className='recommend_playlist__title'>
-            推荐电台
-          </View>
-          <View className='recommend_playlist__content'>
-            {
-              recommendDj.map((item, index) => <View key={index} className='recommend_playlist__item' onClick={this.goDjDetail.bind(this, item)}>
-                <Image
-                  src={`${item.picUrl}?imageView&thumbnail=250x0`}
-                  className='recommend_playlist__item__cover'
-                />
-                <View className='recommend_playlist__item__title'>{item.name}</View>
-              </View>)
-            }
-          </View>
-        </View> */}
         <AtTabBar
           fixed
           selectedColor="#d43c33"

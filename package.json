@@ -18,7 +18,7 @@
     "dev:rn": "npm run build:rn -- --watch",
     "commit": "git-cz"
   },
-  "author": "lsqy93@aliyun.com",
+  "author": "niuguozhen@outlook.com",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
